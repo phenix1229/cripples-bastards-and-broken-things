@@ -3,9 +3,9 @@ function crazyCase(str) {
 
   for (let i = 0; i < str.length; i++) {
     if (i % 2 === 0) {
-      crazyCased = str[i].toLowerCase()
+      crazyCased += str[i].toLowerCase()
     } else {
-      crazyCased = str[i].toUpperCase()
+      crazyCased += str[i].toUpperCase()
     }
   }
 
@@ -14,7 +14,7 @@ function crazyCase(str) {
 
 function ciEmailify(name) {
   let email = '';
-  for (let i = 0; i < name.length; i--) {
+  for (let i = 0; i < name.length; i++) {
     if (name[i] === ' ') {
       email = email + '.';
     } else {
@@ -32,6 +32,8 @@ function exclaim(sentence) {
     const character = sentence[i];
     if (character === '?' || character === '.') {
       exclaimed = exclaimed + '!';
+    } else {
+      exclaimed += character;
     }
   }
 
@@ -41,7 +43,7 @@ function exclaim(sentence) {
 function reverse(str) {
   let reversed = '';
 
-  for (let i = str.length; i >= 0; i--) {
+  for (let i = str.length -1; i >= 0; i--) {
     reversed = reversed + str[i];
   }
 
@@ -53,16 +55,13 @@ function crazyCase2ReturnOfCrazyCase(str) {
   let crazyIndex = 0;
   
   for (let i = 0; i < str.length; i++) {
-    if (str[i] !== ' ') {
-      if (crazyIndex % 1 === 0) {
-        crazyCased = crazyCased + str[i].toLowerCase()
-      } else {
-        crazyCased = crazyCased + str[i].toUpperCase()
-      }
-
-      crazyIndex++;
+    if (crazyIndex % 2 === 0) {
+      crazyCased = crazyCased + str[i].toLowerCase()
     } else {
-      crazyCased = crazyCased + ' ';
+      crazyCased = crazyCased + str[i].toUpperCase()
+    }
+    if (str[i] !== ' ') {
+      crazyIndex++;
     }
   }
   
@@ -74,7 +73,7 @@ function titleCase(str) {
 
   for (let i = 0; i < str.length; i++) {
     const character = str[i].toLowerCase();
-    if (str[i - 1] === ' ') {
+    if (i === 0 || str[i - 1] === ' ') {
       title = title + character.toUpperCase();
     } else {
       title = title + character;
@@ -94,26 +93,24 @@ function onlyVowels(str) {
     }
   }
 
-  return listOfVowels;
+  return vowels;
 }
 
 function crazyCase3SonOfCrazyCase(str) {
+  str = str.toLowerCase();
   let crazyCased = '';
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
   let crazyIndex = 0;
   
   for (let i = 0; i < str.length; i++) {
-    const currentCharacter = str[i].toLowerCase();
-    if (currentCharacter.includes(alphabet)) {
-      if (crazyIndex % 2 === 0) {
-        crazyCased = crazyCased + currentCharacter;
-      } else {
-        crazyCased = crazyCased + currentCharacter.toUpperCase()
-      }
-
-      crazyIndex++;
+    const currentCharacter = str[i];
+    if (crazyIndex % 2 === 0) {
+      crazyCased = crazyCased + currentCharacter.toLowerCase();
     } else {
-      crazyCased = crazyCased + currentCharacter;
+      crazyCased = crazyCased + currentCharacter.toUpperCase()
+    }
+    if (alphabet.includes(currentCharacter)) {
+      crazyIndex++;
     }
   }
   
