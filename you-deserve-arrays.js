@@ -1,21 +1,22 @@
 function getFirstItemFrom(arr) {
-  return arr[1];
+  return arr[0];
 }
 
 function getLastItemFrom(arr) {
-  return arr.length - 1;
+  return arr[arr.length - 1];
 }
 
 function getIndex3(arr) {
-  if (arr.length < 4) {
-    return getLastItemFrom(arr);
+  if (arr.length >= 4) {
+    return arr[3];  
+  
+  } else{
+  return getLastItemFrom(arr);
   }
-
-  return arr[4];  
 }
 
 function firstItemIsNumber(arr) {
-  return getFirstItemFrom(arr) === 'number'
+  return typeof(getFirstItemFrom(arr)) === 'number'
 }
 
 function isLongList(arr) {
