@@ -69,13 +69,12 @@ function split(str, separator) {
   let strStartIndex = 0;
 
   for (let i = 0; i < str.length; i++) {
-    if (str[i] === separator) {
-      arr.push(str.slice(strStartIndex, separator));
-      strStartIndex = str[i];
+      if (str[i] === separator) {
+        arr.push(str.slice(strStartIndex, i));
+        strStartIndex = i + 1;
+      }
     }
     arr.push(str.slice(strStartIndex));
-  }
-
 
   return arr;
 }
